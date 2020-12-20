@@ -1,5 +1,11 @@
-<div *ngFor="let account of accounts$ | async" class="account">
-  <div class="name">{{account.name}} - {{account.amount}}
+<div *ngFor="let accountItem of accounts$ | async" class="account">
+  <div class="name">{{accountItem.name}} - {{accountItem.amount}}
   </div>
-  <div class="status">{{account.status}}</div>
+  <div class="status">
+    <polymorpheus-outlet
+      [content]="accountItem.status"
+      [context]="{account: accountItem.account}"
+    >
+    </polymorpheus-outlet>
+  </div>
 </div>

@@ -1,12 +1,17 @@
 import {Observable} from "rxjs";
+import {PolymorpheusContent} from "@tinkoff/ng-polymorpheus";
 
-export type AccountListItem = Readonly<{
+export type AccountListItem<A = unknown> = Readonly<{
   id: number;
   name: string;
   amount: number;
-  status?: string;
+  status?: PolymorpheusContent<AccountListItemContext<A>>;
 }>;
 
-export interface AccountListItemPlugin {
-  getItems(): Observable<AccountListItem[]>;
+export type AccountListItemContext<A> = {
+  account: A;
+};
+
+export interface AccountListItemPlugin<A = unknown> {
+  getItems(): Observable<AccountListItem<A>[]>;
 }

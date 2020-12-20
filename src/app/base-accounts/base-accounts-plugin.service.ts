@@ -1,15 +1,31 @@
 import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
 import {AccountListItem, AccountListItemPlugin} from "../accounts-list/account-list-item-plugin";
+import {BaseAccount} from "./base-account";
+import {map} from "rxjs/operators";
 
 @Injectable()
-export class BaseAccountsPluginService implements AccountListItemPlugin {
-  getItems(): Observable<AccountListItem[]> {
+export class BaseAccountsPluginService
+  implements AccountListItemPlugin<BaseAccount> {
+  getItems(): Observable<AccountListItem<BaseAccount>[]> {
+    return this.getAccounts().pipe(
+      map(accounts =>
+        accounts.map(account => ({
+          id: account.id,
+          name: account.name,
+          account,
+          amount: account.balance
+        }))
+      )
+    );
+  }
+
+  private getAccounts(): Observable<BaseAccount[]> {
     return of([
       {
-        id: 1000,
+        id: 101,
         name: "Рублевый",
-        amount: 150
+        balance: 100
       }
     ]);
   }
