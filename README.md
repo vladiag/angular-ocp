@@ -1,27 +1,15 @@
-# AngularOcp
+# Angular OCP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+В репозитории представлен пример использования OCP в контексте Angular, в качестве примера используется отрисовка списка счетов со следующим ТЗ:
+* Есть 3 вида счетов - расчетные, кредитные и депозиты
+* Разные виды счетов получаем из разных API
+* У каждого типа счетов своя моделька
+* Для расчетных счетов выводим имя счета и баланс на счете
+* Для депозитных счетов выводим имя счета, баланс на счете и дату закрытия
+* Для кредитных счетов выводим имя счета, сумму кредита и статус кредита, причем статус кредита должен отображаться красным цветом
 
-## Development server
+## Реализация
+* Коммит [accounts-list without OCP](https://github.com/vladiag/angular-ocp/commit/8874b390a66890bffcae3d5872f31fa0e2020db1) показаывает способ реализации списка без соблюдения OCP через switch-case в компоненте списка счетов
+* Коммит [accounts-list with OCP](https://github.com/vladiag/angular-ocp/commit/ba9faff5b971cd3fdb6dd9f278347612d6ec7bb3) показывает способ реализации списка уже с соблюдением OCP на основе подкладывания сервисом под токен с параметром `multi: true`
+* Коммит [accounts-list with OCP + ng-polymorpheus](https://github.com/vladiag/angular-ocp/commit/fa8ef65f4dc93c3e1f2d2a3f44725ad2bd50eb5e) - дополнение к предыдущей реализации, показывающий возможность всевозможной кастомизации отображения конкретного счета на основе применения библиотеки [ng-polymorpheus](https://github.com/TinkoffCreditSystems/ng-polymorpheus)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
