@@ -1,15 +1,5 @@
-<ng-container *ngFor="let account of accounts$ | async">
-  <div class="account" [ngSwitch]="account.type">
-    <ng-container *ngSwitchCase="'deposit'">
-      <div class="name">{{account.info.name}} - {{account.info.amount}}</div>
-      <div class="status">Закроется {{account.info.closeDate}}</div>
-    </ng-container>
-    <ng-container *ngSwitchCase="'loan'">
-      {{account.info.info.name}} - {{account.info.info.amount}} |
-      <span style="color: red">{{account.info.info.status}}</span>
-    </ng-container>
-    <ng-container *ngSwitchCase="'base'">
-      {{account.info.name}} - {{account.info.balance}}
-    </ng-container>
+<div *ngFor="let account of accounts$ | async" class="account">
+  <div class="name">{{account.name}} - {{account.amount}}
   </div>
-</ng-container>
+  <div class="status">{{account.status}}</div>
+</div>
